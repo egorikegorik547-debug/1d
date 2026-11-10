@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+body {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.font-display {
+  font-family: "Russo One", Impact, "Arial Black", sans-serif;
+}
+.font-cond {
+  font-family: "Oswald", "Arial Narrow", "Roboto Condensed", ui-sans-serif, sans-serif;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0.35) 3px);
+}
+
+@keyframes ember {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(var(--drift, 0px), -105vh, 0) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes panelin {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.glitch {
+  position: relative;
+  animation: flicker 6s infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glitch::before {
+  color: #ff2a2a;
+  mix-blend-mode: screen;
+  animation: glitch1 5s infinite steps(1);
+  clip-path: inset(0 0 60% 0);
+}
+.glitch::after {
+  color: #2ad4ff;
+  mix-blend-mode: screen;
+  animation: glitch2 5s infinite steps(1);
+  clip-path: inset(55% 0 0 0);
+}
+
+@keyframes glitch1 {
+  0%, 92%, 100% { transform: translate(0, 0); opacity: 0; }
+  93% { transform: translate(-4px, -1px); opacity: 0.8; }
+  95% { transform: translate(3px, 1px); opacity: 0.8; }
+  97% { transform: translate(-2px, 0); opacity: 0.8; }
+}
+@keyframes glitch2 {
+  0%, 92%, 100% { transform: translate(0, 0); opacity: 0; }
+  94% { transform: translate(4px, 1px); opacity: 0.8; }
+  96% { transform: translate(-3px, -1px); opacity: 0.8; }
+  98% { transform: translate(2px, 0); opacity: 0.8; }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  91% { opacity: 1; }
+  92% { opacity: 0.7; }
+  93% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #57534e #0c0a09;
+}
